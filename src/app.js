@@ -4,6 +4,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const setupDatabase = require("./database");
+const { getTokenClasses } = require("./services/token-classes");
 
 const startServer = () => {
   const app = express();
@@ -20,10 +21,13 @@ const startServer = () => {
     .use(express.urlencoded({ extended: true }));
 
   // protected routes
-  app.get("/token-classes", async (req, res) => {
+  app.get("/api/token-classes", async (req, res) => {
     try {
-      console.log("GET: /token-classes");
-      res.json({ data: [] });
+      const data = await getTokenClasses();
+      if (data) {
+        console.log("GET: /token-classes");
+        res.json({ data });
+      }
     } catch (error) {
       console.error(error);
       res.status(500).send("Something went wrong");
