@@ -45,7 +45,7 @@ const startServer = () => {
 
   setupDatabase()
     .then(() => {
-      app.listen(3002, () => {
+      app.listen(process.env.PORT || 3002, () => {
         console.log("Server running on port 3002");
       });
     })
