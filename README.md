@@ -84,7 +84,7 @@ For using the service, you will need a running Postgres database. By default, th
 ## Environment Variables
 
 This server uses the following environment variables:
-
+ENVIRONMENT: The environment that the server is running in. This is used to determine which database to connect to. By default, this is set to `development`. Possible values are `development` and `production`.
 PORT: The port that the server will listen on. By default, this is set to 3002.
 DATABASE_URL: The URL of the Postgres database that will be used to store token classes information. For local development, this could be set to `postgres://user:password@localhost:5432/token_classes`.
 CLIENT_URL: The URL of the client application that will be using this server. This is used to configure CORS settings. By default, this is set to `http://localhost:3000`.
